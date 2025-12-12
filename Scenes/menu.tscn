@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhnyevniu04kp"]
+
+[ext_resource type="Script" uid="uid://bx1j6lraapbqd" path="res://Scripts/meun.gd" id="1_x0w0k"]
+[ext_resource type="Texture2D" uid="uid://cwb5h2or0smwj" path="res://Assets/scene/bg_0.png" id="2_6akqj"]
+
+[node name="Meun" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+script = ExtResource("1_x0w0k")
+
+[node name="Bg0" type="Sprite2D" parent="."]
+position = Vector2(199.6, 117.4)
+scale = Vector2(1.69, 1.4725)
+texture = ExtResource("2_6akqj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.086114
+anchor_top = 0.0562963
+anchor_right = 0.120829
+anchor_bottom = 0.149815
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "play"
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "options"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

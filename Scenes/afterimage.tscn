@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://vamicq1f6flc"]
+
+[ext_resource type="Script" uid="uid://br63mao1hheo5" path="res://Scripts/afterimage.gd" id="1_6uigq"]
+
+[node name="Afterimage" type="AnimatedSprite2D"]
+texture_filter = 1
+script = ExtResource("1_6uigq")

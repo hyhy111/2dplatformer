@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp2gsec5lgjrp"]
+
+[ext_resource type="Script" uid="uid://bx1j6lraapbqd" path="res://Scripts/meun.gd" id="1_qkrbc"]
+
+[node name="options_meun" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qkrbc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "settings"
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "back"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

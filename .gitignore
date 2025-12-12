@@ -1,0 +1,30 @@
+# -----------------------------------------------------------------------------
+# .gitignore for Godot 4.4 (GDScript) on Windows using VS Code
+# -----------------------------------------------------------------------------
+
+# --- Godot Editor Files ---
+.godot/
+*.tmp
+~*
+
+# --- Exported Game Files ---
+build/
+builds/
+export/
+*.export/
+*.pck
+*.exe
+
+# --- GDScript Language Server Cache ---
+.lsp/
+
+# --- Spine Editor Backup Files ---
+*.spine.backup
+
+# --- Windows System Files ---
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- VS Code IDE Files ---
+.vscode/

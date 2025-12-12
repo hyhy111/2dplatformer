@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://cwaa8ftlj48qu"]
+
+[ext_resource type="Script" uid="uid://sw5fq1kkjqbv" path="res://Scripts/character_stats.gd.gd" id="1_hb588"]
+
+[resource]
+script = ExtResource("1_hb588")
+move_speed = 200.0
+acceleration = 800.0
+friction = 1000.0
+gravity_scale = 1.0
+jump_force = -450.0
+air_control_speed = 150.0
+air_attack_drift = 100.0
+fall_drift_speed = 50.0
+air_attack_gravity_scale = 0.5
+ground_lunge_speeds = Array[float]([60.0, 30.0, 80.0])
+knockback_resistance = 0.0
+metadata/_custom_type_script = "uid://sw5fq1kkjqbv"
