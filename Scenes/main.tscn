@@ -1,10 +1,14 @@
-[gd_scene load_steps=12 format=4 uid="uid://dhx4w8ei1ulc7"]
+[gd_scene load_steps=13 format=4 uid="uid://dhx4w8ei1ulc7"]
 
 [ext_resource type="Texture2D" uid="uid://l2me87wnct4j" path="res://Assets/scene/background.png" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://1sdmiu5gikox" path="res://Assets/scene/tileset_64x64(new).png" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://7ew083rm0chl" path="res://Scenes/character.tscn" id="5_21xkr"]
 [ext_resource type="Shader" uid="uid://d3kec07mdnlgi" path="res://Shaders/water_shader.gdshader" id="5_kry3j"]
 [ext_resource type="Script" uid="uid://bhnxcc4v0bxf3" path="res://Scripts/water.gd" id="6_21xkr"]
+
+[sub_resource type="Environment" id="Environment_kry3j"]
+background_mode = 3
+glow_enabled = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjvhh"]
 texture = ExtResource("2_8gbba")
@@ -113,16 +117,19 @@ noise = SubResource("FastNoiseLite_21xkr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_21xkr"]
 shader = ExtResource("5_kry3j")
-shader_parameter/CAST_COLOR = Color(0, 0, 0, 1)
+shader_parameter/CAST_COLOR = Color(0, 0, 0, 0)
 shader_parameter/fast_noise = SubResource("NoiseTexture2D_6bp64")
 shader_parameter/speed = Vector2(0.03, 0.07)
 shader_parameter/wave_strength = 2.0
 shader_parameter/scale_y = 650.0
-shader_parameter/y_zoom = 1.12697
+shader_parameter/y_zoom = 1.65
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_6bp64"]
 
 [node name="Main" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kry3j")
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -2

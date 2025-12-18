@@ -1,7 +1,7 @@
 [gd_scene load_steps=69 format=3 uid="uid://7ew083rm0chl"]
 
 [ext_resource type="Script" uid="uid://cm8liqxjo3w5t" path="res://Scripts/character.gd" id="1_pu2lt"]
-[ext_resource type="Shader" uid="uid://d1aabynni0mi2" path="res://Shaders/dissolve_shader.gdshader" id="2_vgqql"]
+[ext_resource type="Shader" uid="uid://d1aabynni0mi2" path="res://Shaders/character_shader.gdshader" id="2_vgqql"]
 [ext_resource type="Texture2D" uid="uid://cwwkoikf6w422" path="res://Assets/player/Soldier.png" id="3_fkybt"]
 [ext_resource type="Script" uid="uid://bhwyf1goyq8s3" path="res://Scripts/state_machine.gd" id="4_tx1dd"]
 [ext_resource type="Script" uid="uid://cjljpcwpfvak8" path="res://Scripts/States/idle_state.gd" id="5_tx1dd"]
@@ -30,6 +30,10 @@ shader_parameter/progress = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_344ge")
 shader_parameter/edge_color = Color(0.773057, 0, 0.118761, 1)
 shader_parameter/edge_width = 0.1
+shader_parameter/magic_color = Color(1, 0, 1, 1)
+shader_parameter/replace_color = Color(2.83971e-06, 0.47537, 0.486967, 1)
+shader_parameter/glow_intensity = 25.0
+shader_parameter/tolerance = 0.01
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4iuc"]
 atlas = ExtResource("3_fkybt")
@@ -465,8 +469,9 @@ shape = SubResource("CapsuleShape2D_bo1nx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_6bp64")
 sprite_frames = SubResource("SpriteFrames_b3802")
-animation = &"fall"
+animation = &"attack1"
 autoplay = "idle"
+frame = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.6, 1.6)
