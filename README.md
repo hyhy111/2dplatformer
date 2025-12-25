@@ -32,6 +32,7 @@ This is a 2D platformer game project developed with **Godot 4.4**. It serves as 
 | **Move Right** | `D` / `Right Arrow` | Move the character to the right. |
 | **Jump** | `K` | Make the character jump. |
 | **Attack** | `J` | Perform an attack. |
+| **Sprint** | `L` | Perform a sprint/dash. |
 | **Debug Kill** | `Space` | Instantly kill the character (for testing death state/animation). |
 
 ---
@@ -50,7 +51,7 @@ This is a 2D platformer game project developed with **Godot 4.4**. It serves as 
 * **视觉效果**: 包含残影（Afterimage）效果和溶解（Dissolve）Shader。
 * **战斗系统**: 基础的攻击连招和伤害处理。
 
-### 如何开始
+### 如何启动
 
 1. 使用 Godot 引擎（版本 4.4 或更高）打开本项目。
 2. 找到主场景文件：`Scenes/main.tscn`。
@@ -64,4 +65,5 @@ This is a 2D platformer game project developed with **Godot 4.4**. It serves as 
 | **向右移动** | `D` / `右方向键` | 控制角色向右移动。 |
 | **跳跃** | `K` | 控制角色跳跃。 |
 | **攻击** | `J` | 执行攻击动作。 |
+| **冲刺** | `L` | 执行冲刺/突进动作。 |
 | **调试死亡** | `Space` (空格键) | 立即杀死角色（用于测试死亡状态/动画）。 |

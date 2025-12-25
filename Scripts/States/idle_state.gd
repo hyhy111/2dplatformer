@@ -15,6 +15,10 @@ func physics_update(_delta: float):
 		transition_requested.emit("fallstate")
 		return
 
+	if Input.is_action_just_pressed("sprint"):
+		transition_requested.emit("sprintstate")
+		return
+
 	if character.is_jump_input():
 		transition_requested.emit("jumpstate")
 	elif character.get_move_input() != 0:

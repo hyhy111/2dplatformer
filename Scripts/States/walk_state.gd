@@ -4,12 +4,16 @@ extends State
 # 进入行走状态
 func enter():
 	character.play_animation("walk")
-	character.start_afterimage_effect()
+	# character.start_afterimage_effect()
 
 # 物理更新：处理移动和状态转换
 func physics_update(_delta: float):
 	if not character.is_on_floor():
 		transition_requested.emit("fallstate")
+		return
+
+	if Input.is_action_just_pressed("sprint"):
+		transition_requested.emit("sprintstate")
 		return
 
 	if character.is_jump_input():
@@ -32,6 +36,6 @@ func physics_update(_delta: float):
 		transition_requested.emit("attackstate")
 
 # 退出行走状态
-func exit():
-	# 退出行走状态时停止残影效果
-	character.stop_afterimage_effect()
+# func exit():
+# 	# 退出行走状态时停止残影效果
+# 	character.stop_afterimage_effect()

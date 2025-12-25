@@ -3,9 +3,6 @@
 class_name AfterimageComponent
 extends Node2D
 
-# 预加载拖影模板场景
-const AfterimageScene = preload("res://Scenes/afterimage.tscn")
-
 #region --- 导出参数 ---
 @export_group("Afterimage Effect")
 
@@ -33,6 +30,9 @@ const AfterimageScene = preload("res://Scenes/afterimage.tscn")
 
 ## 拖影容器的 Z Index，用于控制渲染顺序。默认为 -1，确保在角色后面。
 @export var z_index_value: int = -1
+
+# 添加纹理过滤选项，默认为 Nearest (适合像素游戏)
+@export var texture_filter_mode: CanvasItem.TextureFilter = TEXTURE_FILTER_NEAREST
 #endregion
 
 # --- 内部节点引用 ---
@@ -74,6 +74,7 @@ func _setup_internal_nodes():
 	# 将容器设为顶层，这样拖影不会跟随角色移动
 	_container.top_level = true
 	_container.z_index = z_index_value
+	_container.texture_filter = texture_filter_mode
 	add_child(_container)
 
 
@@ -99,12 +100,19 @@ func _setup_pool():
 		return
 	
 	for i in pool_size:
-		var afterimage = AfterimageScene.instantiate() as Afterimage
+		var afterimage = Afterimage.new()
+
+		afterimage.texture_filter = texture_filter_mode
+		
+		afterimage.name = "Afterimage_%d" % i # 为了调试方便给个名字
 		afterimage.visible = false
+		
 		# 连接回收信号
 		afterimage.repool_me.connect(_on_afterimage_repooled)
+		
 		# 预先添加到容器中
 		_container.add_child(afterimage)
+		
 		# 添加到池中备用
 		_pool.append(afterimage)
 

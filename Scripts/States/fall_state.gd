@@ -45,6 +45,10 @@ func physics_update(delta: float):
 
 	# --- 正常的空中逻辑 (未落地时) ---
 
+	if Input.is_action_just_pressed("sprint"):
+		transition_requested.emit("sprintstate")
+		return
+
 	# 2. 空中控制
 	var direction = character.get_move_input()
 	if direction != 0:

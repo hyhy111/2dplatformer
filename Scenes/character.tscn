@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://7ew083rm0chl"]
+[gd_scene load_steps=73 format=3 uid="uid://7ew083rm0chl"]
 
 [ext_resource type="Script" uid="uid://cm8liqxjo3w5t" path="res://Scripts/character.gd" id="1_pu2lt"]
 [ext_resource type="Shader" uid="uid://d1aabynni0mi2" path="res://Shaders/character_shader.gdshader" id="2_vgqql"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://p7qn8kpitic" path="res://Scripts/States/air_attack_state.gd" id="10_pu2lt"]
 [ext_resource type="Script" uid="uid://tl062iflna4q" path="res://Scripts/States/walk_state.gd" id="10_tx1dd"]
 [ext_resource type="Script" uid="uid://bsf30hpixb7ig" path="res://Scripts/Components/afterimage_component.gd" id="13_aftim"]
+[ext_resource type="Script" uid="uid://bebposx2psyq7" path="res://Scripts/States/sprint_state.gd" id="14_2daya"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bo1nx"]
 radius = 5.39999
@@ -190,6 +191,18 @@ region = Rect2(0, 300, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dp3o"]
 atlas = ExtResource("3_fkybt")
 region = Rect2(100, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le1tg"]
+atlas = ExtResource("3_fkybt")
+region = Rect2(500, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2daya"]
+atlas = ExtResource("3_fkybt")
+region = Rect2(300, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvyft"]
+atlas = ExtResource("3_fkybt")
+region = Rect2(400, 100, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1ilt"]
 atlas = ExtResource("3_fkybt")
@@ -384,6 +397,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_le1tg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2daya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvyft")
+}],
+"loop": false,
+"name": &"sprint",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_d1ilt")
 }, {
 "duration": 1.0,
@@ -457,11 +484,10 @@ jump_velocity = -600.0
 
 [node name="AfterimageComponent" type="Node2D" parent="."]
 z_index = -5
+texture_filter = 1
 script = ExtResource("13_aftim")
 sprite_path = NodePath("../AnimatedSprite2D")
-interval = 0.055
-duration = 0.6
-final_scale = 0.7
+final_scale = 0.9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_bo1nx")
@@ -469,9 +495,9 @@ shape = SubResource("CapsuleShape2D_bo1nx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_6bp64")
 sprite_frames = SubResource("SpriteFrames_b3802")
-animation = &"attack1"
+animation = &"sprint"
 autoplay = "idle"
-frame = 3
+frame = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.6, 1.6)
@@ -514,3 +540,10 @@ script = ExtResource("9_f1ek2")
 [node name="FallState" type="Node" parent="StateMachine"]
 script = ExtResource("10_gymyn")
 landing_drift_speed = 30.0
+
+[node name="SprintState" type="Node" parent="StateMachine"]
+script = ExtResource("14_2daya")
+max_sprint_speed = 600.0
+duration_in = 0.1
+duration_hold = 0.4
+duration_out = 0.3

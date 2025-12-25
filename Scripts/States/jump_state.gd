@@ -15,6 +15,10 @@ func physics_update(_delta: float):
 	else:
 		character.velocity.x = move_toward(character.velocity.x, 0, character.speed)
 
+	if Input.is_action_just_pressed("sprint"):
+		transition_requested.emit("sprintstate")
+		return
+
 	# 当速度变为正值（下落）时转换到下落状态
 	if character.velocity.y > 0:
 		transition_requested.emit("fallstate")
