@@ -2,7 +2,7 @@
 class_name State
 extends Node
 
-var character: CharacterBody2D # 角色引用
+var character: Character # 角色引用
 var anim_sprite: AnimatedSprite2D # 动画精灵引用
 
 signal transition_requested(new_state_name: String) # 状态转换请求信号

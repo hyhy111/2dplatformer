@@ -1,4 +1,5 @@
 # character.gd
+class_name Character
 extends CharacterBody2D
 
 @export var death_anim_name: String = "death"
@@ -104,7 +105,7 @@ func die():
 	if state_machine:
 		state_machine.change_state("deathstate")
 
-#region --- 拖影效果代理方法（兼容旧接口）---
+#region --- 拖影效果代理方法 ---
 
 ## 开始生成拖影效果
 func start_afterimage_effect():
